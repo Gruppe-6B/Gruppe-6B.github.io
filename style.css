@@ -1,0 +1,19 @@
+body {
+    background-color: #171717;
+}
+
+#header {
+    align-items: center;
+}
+
+.center {
+    text-align: center;
+}
+p, h1 {
+    color: #ededed;
+}
+
+a {
+    color: #DA0037;
+    font-family: "Arial Black", "Segoe UI", serif;
+}
