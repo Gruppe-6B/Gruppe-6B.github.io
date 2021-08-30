@@ -1,0 +1,30 @@
+body {
+    background-color: #171717;
+    color: #ededed;
+}
+
+#header {
+    align-items: center;
+}
+
+.center {
+    text-align: center;
+}
+p, h1 {
+    color: #ededed;
+}
+
+a {
+    color: #DA0037;
+    font-family: "Arial Black", "Segoe UI", serif;
+}
+
+.card {
+    width: 33%;
+    background-color: #444;
+    border: #555 2px;
+}
+
+.card img {
+    width: 100%;
+}
