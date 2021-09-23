@@ -6,4 +6,5 @@ Repository for gruppearbeid i IS-114
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%202.png?raw=true)
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%203.png?raw=true)
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%204.png?raw=true)
+![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%205.png?raw=true)
 
