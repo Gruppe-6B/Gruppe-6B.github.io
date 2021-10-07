@@ -101,7 +101,7 @@
             const results = document.querySelector('.results pre');
             postData('https://bacit.info/', formJSON)
             .then(data => {
-               results.innerText = JSON.stringify(data, null, 2);
+               results.innerText = JSON.stringify(data, null, 2) + '\n\nJSON fil: ' + data.time + '-' + data.trxid + '.json';
             });
        }
 
