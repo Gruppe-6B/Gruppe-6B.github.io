@@ -28,6 +28,6 @@ Etter skissene og brukerhistoriene var ferdige, gikk vi i gang med kodingen og u
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%202.png?raw=true)
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%203.png?raw=true)
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%204.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/Gruppe-6B.github.io/blob/2c52d8c2330b6167edeade0a8b20f2a8fe9972f3/VISITBILETTE.png)
+![alt text](https://github.com/Gruppe-6B/Gruppe-6B.github.io/blob/2c52d8c2330b6167edeade0a8b20f2a8fe9972f3/VISITBILETTE.png?raw=true)
 
 
