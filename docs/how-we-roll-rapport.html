@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TITTEL</title>
+    <title>How we roll - rapport</title>
     <style>
-     <!-- Her kan stil defineres (vi skal bruke Cascading Style Sheets) -->
+        body {
+            background-color: #222;
+            color: #ededed;
+        }
     </style>
     <!--
 
@@ -26,40 +29,57 @@
 <table>
     <thead>
         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="3"><h3>How we roll</h3></th>
+
         </tr>
     </thead>
     <tbody id="howWeRollTableBody">
 
 
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <canvas id="personer" width="300" height="400"></canvas>
+            </td>
+        </tr>
+    </tfoot>
 </table>
 
 <canvas id="report"></canvas>
 
 <script>
     // Dette er en kommentar
-    const spm = [
+    var spm = [
         ["morgenEllerNatt", "Morgenfugl", "Nattugle"],
         ["lagarbeid", "Fortrekker å jobbe selvstendig", "Foretrekker å jobbe i gruppe"],
         ["improvisere", "Planlegge nøye først", "Improvisere"],
        ];
 
+
     const jsons = ["20211007100530-7d170895649d242b823fad8757145257.json",
         "20211007100610-a99f9a2a596db0f8e41de8ff268689eb.json",
         "20211007100632-2220794f961a680a55789a4e6a189001.json"];
 
+    let emptyArray = new Array(11);
+    for (let i = 0; i < 11; i++) {
+        emptyArray[i] = 0;
+    }
+    console.log(emptyArray);
+    for (let i = 0; i < spm.length; i++) {
+        spm[i].push([...emptyArray]);
+    }
+    console.log(spm);
+
     let howWeRollTableBody = document.getElementById('howWeRollTableBody');
     spm.forEach(skrivSpørsmål);
 
-
+    //Bygger opp tabellen med rader for hvert spørsmål
     function skrivSpørsmål(item) {
 
         let tr = document.createElement('tr');
         let inner = '<td style="text-align:right;"><label for="' + item[0] + '">' + item[1] + '</label></td>' +
-            '<td><canvas id="canvas-' + item[0] + '"></canvas></td>' +
+            '<td><canvas id="canvas-' + item[0] + '" width="240" height="40"></canvas></td>' +
             '<td><label for="' + item[0] + '">' + item[2] + '</label></td>';
         tr.innerHTML = inner;
 
@@ -84,72 +104,83 @@
     */
 
 
-    jsons.forEach(renderJSON);
 
-    function renderJSON(item) {
-        fetch('https://bacit.info/hwr/' + item, {cache: 'no-cache'})
+
+    spm.forEach(function(s) {
+        var canvas = document.getElementById('canvas-' + s[0]);
+        var context = canvas.getContext('2d');
+
+        context.beginPath();
+        context.moveTo(20,20);
+        context.lineTo(220,20);
+        context.strokeStyle = "#aaa";
+        context.stroke();
+    })
+
+    var personer = new Array();
+    jsons.forEach(renderJSON);
+    //Skriver ut data på canvaser for en JSON fil.
+    async function renderJSON(item) {
+        //hente json fra serveren
+        await fetch('https://bacit.info/hwr/' + item, {cache: 'no-cache'})
             .then(response => response.json())
             .then(data => {
                 //data inneholder modellen
-                console.log(data);
+                let color = 'hsl('+Math.random() * 360 +', 100%, 40%)';
 
-                spm.forEach(skrivTilCanvas(item, data));
+                let i = 0;
+                spm.forEach(function(s){
+                    let intVal = parseInt(data[s[0]]);
+                    let canvas = document.getElementById('canvas-' + s[0]);
+                    let context = canvas.getContext('2d');
 
-                /*
-                document.querySelector("#debug").innerText = data.data01 + " " + data
-                    .dorn + " " + data.cora;
+                    let X = 20 + intVal * 20;
+                    let Y = 20 + spm[i][3][intVal] * 5;
+                    let R = 6;
+                    context.beginPath();
+                    context.arc(X, Y, R, 0, 2*Math.PI, false);
+                    context.fillStyle = color;
+                    context.fill();
+                    context.lineWidth = 1;
+                    context.strokeStyle = "#111";
+                    context.stroke();
 
-                var canvas = document.getElementById('canvas');
-                var context = canvas.getContext('2d');
+                    spm[i][3][intVal]++;
+                    i++;
+                });
 
-                context.font = '14px serif';
-                context.fillText('dorn', 30, 24);
-                context.fillText('cora', 30, 74);
+                personer.push([data.navn, color]);
 
-                context.beginPath();
-                context.moveTo(70,20);
-                context.lineTo(170,20);
-
-                //context.beginPath();
-                context.moveTo(70,70);
-                context.lineTo(170,70);
-                context.stroke();
-
-
-                var X = 70 + parseInt(data.dorn, 10);
-                var Y = 20;
-                var R = 5;
-                context.beginPath();
-                context.arc(X, Y, R, 0, 2*Math.PI, false);
-                context.fillStyle = "lightgreen";
-                context.fill();
-                context.lineWidth = 1;
-                context.strokeStyle = "black";
-                context.stroke();
-                //context.closePath();
-
-                var X = 70 + parseInt(data.cora, 10);
-                var Y = 70;
-                var R = 5;
-                context.beginPath();
-                context.arc(X, Y, R, 0, 2*Math.PI, false);
-                context.fillStyle = "red";
-                context.fill();
-                context.lineWidth = 1;
-                context.strokeStyle = "black";
-                context.stroke();
-
-                 */
 
             });
     }
 
-    //tar imot spm og data og skriver til riktig canvas element
-    function skrivTilCanvas(item,json) {
-        let canvas = document.getElementById('canvas-' + spm[0]);
-        console.log(canvas);
-    }
+    let personerCanvas = document.getElementById('personer');
+    let personercontext = personerCanvas.getContext('2d');
+    let i = 0;
+    skrivNavn();
+    function skrivNavn() {
 
+
+        personer.forEach(function(item){
+            console.log(item);
+            let X = 20;
+            let Y = 20 + i * 20;
+            let R = 6;
+            personercontext.beginPath();
+            personercontext.arc(X, Y, R, 0, 2*Math.PI, false);
+            personercontext.fillStyle = item[1];
+            personercontext.fill();
+            personercontext.lineWidth = 1;
+            personercontext.strokeStyle = "#ccc";
+            personercontext.stroke();
+
+            personercontext.font = '14px serif';
+            personercontext.fillText(item[0], X + 20, Y);
+            i++;
+            console.log(item);
+        });
+    }
 
 
 </script>
