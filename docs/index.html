@@ -16,13 +16,15 @@
         .center {
             text-align: center;
         }
-        p, h1 {
+
+        p, h1, h2 {
             color: #ededed;
         }
 
         a {
-            color: #DA0037;
-            font-family: "Arial Black", "Segoe UI", serif;
+            color: black;
+            font-weight: lighter;
+            text-decoration: underline;
         }
 
         .card {
@@ -35,13 +37,21 @@
             width: 100%;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+        [class*="visittkort"] {
+            float: left;
+        }
+
         .visittkort {
-            background: antiquewhite;
+            background: lightgrey;
             font-size: 20px;
             padding: 10px;
             border: 3px solid grey;
             margin: 10px;
             width: 40%;
+            height: 300px;
         }
 
         li, h3 {
@@ -56,37 +66,100 @@
         .visittkortbilde {
             border-radius: 50%;
             radius: 50%;
-            max-width: 30%;
+            max-width: 150px;
             height: auto;
+            float: left;
+            margin: 0.5em;
+            display: flex;
+            justify-content: center;
         }
-
 
 
     </style>
 </head>
 <body>
-    <div id="header">
-        <h1 class="center">Gruppe 6B - <a href="https://github.com/Gruppe-6B/Gruppe-6B.github.io" target="_blank">Vår github repository</a></h1>
-    </div>
-    <div>
-        <p>Vi i gruppe 6B er den mest kreative og innovative gruppen på BACIT. Her er bevis</p>
-        <br>
-        <h1>Våre prosjekter</h1>
-        <div class="card">
-            <h2 style="color: white;">Visittkort</h2>
-            <img alt="" src="https://raw.githubusercontent.com/Gruppe-6B/Gruppe-6B.github.io/main/Visittkort-design%202.png"><!--sett inn bilde-->
-            <a href="https://github.com/Gruppe-6B/Gruppe-6B.github.io" style="color: #ededed">https://github.com/Gruppe-6B/Gruppe-6B.github.io</a>
-        </div>
-    </div>
+<div id="header">
+    <h1 class="center">Gruppe 6B - <a href="https://github.com/Gruppe-6B/Gruppe-6B.github.io" target="_blank"
+                                      style="color: white; font-weight: bold;">Vår github repository</a></h1>
+</div>
+<div>
+    <p>Vi i gruppe 6B er den mest kreative og innovative gruppen på BACIT. Her er bevis</p>
+    <br>
+    <h1>Våre prosjekter</h1>
+    <br>
+    <a href="how-we-roll-form.html" style="color: white">HWR-Form</a> <!-- Midlertidig tittel -->
+    <br>
+    <a href="how-we-roll-rapport.html" style="color: white">HWR-Rapport</a> <!-- Midlertidig tittel -->
+    <h2>Visittkort</h2>
+</div>
+<div class="visittkort">
+    <h3 style="text-align:center;">Martine Andersen</h3>
+    <img src="https://avatars.githubusercontent.com/u/89140588?v=4" class="visittkortbilde">
+    <ul>
+        <li>Siviløkonom</li>
+        <li>IT-student</li>
+        <li><a href="mailto:martia16@uia.no">martia16@uia.no</a></li>
+        <li><a href="https://github.com/martia16">https://github.com/martia16</a></li>
+    </ul>
+</div>
+<div class="visittkort">
+    <h3 style="text-align:center;">Sindre Ragnvaldjord Kristiansen</h3>
+    <img src="https://avatars.githubusercontent.com/u/89386715?s=400&v=4" class="visittkortbilde">
+    <ul>
+        <li>Fotball spiller</li>
+        <li>IT-student</li>
+        <li><a href="mailto:sindrerk@uia.no">sindrerk@uia.no</a></li>
+        <li><a href="https://github.com/sindre-kristiansen">https://github.com/sindre-kristiansen</a></li>
+    </ul>
+</div>
+<div class="visittkort">
+    <h3 style="text-align:center;">Erlend S Ingebrigtsen</h3>
+    <img src="http://identicon.net/img/identicon.png" class="visittkortbilde">
+    <ul>
+        <li>Music Enthusiast</li>
+        <li>IT-student</li>
+        <li><a href="erlendi@uia.no">erlendi@uia-no</a></li>
+        <li><a href="https://github.com/martia16">https://github.com/ES1xo</a></li>
+    </ul>
+</div>
+<div class="visittkort">
+    <h3 style="text-align:center;">Magnus Eugene Nymo</h3>
+    <img src="https://avatars.githubusercontent.com/u/89194270?v=4" class="visittkortbilde">
+    <ul>
+        <li>IT-student</li>
+        <li><a href="mailto:martia16@uia.no">magnusen@uia.no</a></li>
+        <li><a href="https://github.com/martia16">https://github.com/menymo</a></li>
+    </ul>
+</div>
+<div class="visittkort">
+    <h3 style="text-align:center;">Huy Trong Vu</h3>
+    <img src="https://avatars.githubusercontent.com/u/89387654?v=4" class="visittkortbilde">
+    <ul>
+        <li>IT-student</li>
+        <li><a href="mailto:huytv@uia.no">huytv@uia.no</a></li>
+        <li><a href="https://github.com/huynim">https://github.com/huynim</a></li>
+    </ul>
+</div>
     <div class="visittkort">
-        <h3 style="text-align:center;">Martine Andersen</h3>
-        <img src="https://avatars.githubusercontent.com/u/89140588?v=4" class="visittkortbilde" style="float:left;margin: 0.5em;">
+        <h3 style="text-align:center;">David Saga</h3>
+        <img src="https://avatars.githubusercontent.com/sagadavid" class="visittkortbilde">
         <ul>
-            <li>Siviløkonom</li>
+            <li></li>
             <li>IT-student</li>
-            <li><a href="mailto:martia16@uia.no">martia16@uia.no</a></li>
-            <li><a href="https://github.com/martia16">https://github.com/martia16</a></li>
+            <li>Cohen/Oracle</li>
+            <li><a href="mailto:davidsa@uia.no">davidsa@uia.no</a></li>
+            <li><a href="https://github.com/sagadavid">https://github.com/sagadavid</a></li>
         </ul>
     </div>
+<div class="visittkort">
+    <h3 style="text-align:center;">Ole Christian</h3>
+    <img src="https://avatars.githubusercontent.com/u/15245098?v=4" class="visittkortbilde">
+    <ul>
+        <li>IT-arbeider</li>
+        <li>IT-student</li>
+        <li><a href="mailto:ocj@bitpro.no">ocj@bitpro.no</a></li>
+        <li><a href="https://github.com/ozin370">https://github.com/ozin370</a></li>
+    </ul>
+</div>
 </body>
 </html>
