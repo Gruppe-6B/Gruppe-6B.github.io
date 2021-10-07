@@ -15,7 +15,7 @@ Vi brukte ***MSCW metoden*** for å utelukke unødvendige funksjoner og sette fo
 
 #Brukerhistorier
 
-![alt text](https://raw.githubusercontent.com/Gruppe-6B/Gruppe-6B.github.io/visittkort/img.png)
+![alt text](https://raw.githubusercontent.com/Gruppe-6B/Gruppe-6B.github.io/visittkort/img.png) 
 
 
 
