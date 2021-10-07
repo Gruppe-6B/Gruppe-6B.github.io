@@ -8,6 +8,15 @@
     <!-- Med denne filen ønsker vi å bevise at vi kan samle inn data ... -->
     <style>
      /* Her kan stil defineres (vi skal bruke Cascading Style Sheets) */
+        body {
+            background-color: #171717;
+            color: #ededed;
+        }
+
+        label {
+            font-size: 12px;
+            color: rgb(200,200,200);
+        }
     </style>
     <!--
 
@@ -26,34 +35,25 @@
     <!-- Issue se https://html.spec.whatwg.org/multipage/forms.html#introduction-4 -->
     <hr>
     <form>
-        <p><label for="data01">Data inn felt #1</label>
-            <input type="text" name="data01" id="data01" /></p>
+        <table>
 
-        <p><label for="data02">Data inn felt #2</label>
-            <input type="text" name="data02" id="data02" /></p>
+            <tbody>
+                <tr>
+                    <td><label for="navn">Navn</label></td>
+                    <td><input type="text" name="navn" id="navn"/></td>
+                    <td></td>
+                </tr>
+                <tr id="howWeRollRow">
+                    <td colspan="3" style="text-align:center;">
+                        <h3>HowWeRoll-parametre</h3>
+                    </td>
+                </tr>
 
-        <p>HowWeRoll-parametre:</p>
+            </tbody>
+        </table>
 
-        <p>
-            <!-- dorn - day or night -->
-            <label for="dorn">Morgenfugl</label>
-            <input type="range" id="dorn" name="dorn" value="50">
-            <label for="dorn">Nattugle</label>
-        </p>
 
-        <p>
 
-            <label for="test">1</label>
-            <input type="range" id="test" name="test" value="50">
-            <label for="test">2</label>
-        </p>
-
-        <p>
-            <!-- cora - cooperate or alone -->
-            <label for="cora">Jobbe med det sammen</label>
-            <input type="range" id="cora" name="cora" value="50">
-            <label for="cora">Gå for seg selv og tenke</label>
-        </p>
 
         <p>
             <label>Please choose one of the numbers:
@@ -65,7 +65,7 @@
             </label>
         </p>
 
-        <button type="submit">Gjør noe</button>
+        <button type="submit">Send inn</button>
     </form>
 
     <div class="results">
@@ -96,6 +96,7 @@
        function handleSubmit(event) {
             event.preventDefault();
             const data = new FormData(event.target);
+
             const formJSON = Object.fromEntries(data.entries());
             const results = document.querySelector('.results pre');
             postData('https://bacit.info/', formJSON)
@@ -103,6 +104,35 @@
                results.innerText = JSON.stringify(data, null, 2);
             });
        }
+
+       const spm = [
+            ["morgenEllerNatt", "Morgenfugl", "Nattugle"],
+            ["lagarbeid", "Fortrekker å jobbe selvstendig", "Foretrekker å jobbe i gruppe"],
+            ["improvisere", "Planlegge nøye først", "Improvisere"],
+            ["perfeksjonist", "Tidsorientert", "Perfeksjonist"],
+            ["Åpen for nye ideer", "Konservativ", "Åpen"],
+            ["Fort irritert", "Konfliktsy", "Fort irritert"],
+            ["Besluttsom", "Ubesluttsom", "Besluttsom"],
+            ["Jobbe i korte eller lange perioder", "Korte", "Lange"],
+            ["Få ting gjort eller ta seg god tid", "Få ting gjort", "Ta seg god tid"],
+            ["Liker å lede?", "Følge", "Lede"]
+
+       ];
+       let howWeRollRow = document.getElementById('howWeRollRow');
+       console.log(howWeRollRow);
+       spm.forEach(skrivSpørsmål);
+
+
+       function skrivSpørsmål(item) {
+            console.log(item);
+            let tr = document.createElement('tr');
+            let inner = '<td style="text-align:right;"><label for="' + item[0] + '">' + item[1] + '</label></td>' +
+            '<td><input type="range" id="' + item[0] + '" name="' + item[0] + '" min="0" max="10" value="5">' +
+            '<td><label for="' + item[0] + '">' + item[2] + '</label></td>';
+            tr.innerHTML = inner;
+            howWeRollRow.parentNode.insertBefore(tr, howWeRollRow.nextSibling);
+       }
+       console.log(spm);
        const form = document.querySelector('form');
        form.addEventListener('submit', handleSubmit);
     </script>
