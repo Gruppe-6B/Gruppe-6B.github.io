@@ -95,16 +95,20 @@
 
     //Tegn linjene for hver canvas/spørsmål:
     spm.forEach(function(s) {
+        let colorLeft = "rgb(111, 166, 33)";
+        let colorRight = "rgb(33, 102, 166";
         let canvas = document.getElementById('canvas-' + s[0]);
         let context = canvas.getContext('2d');
         let gradient = context.createLinearGradient(20,20,220,20);
-        gradient.addColorStop(0, "rgb(111, 166, 33)");
-        gradient.addColorStop(1, "rgb(33, 102, 166");
+        gradient.addColorStop(0, colorLeft);
+        gradient.addColorStop(1, colorRight);
         context.beginPath();
         context.moveTo(20,20);
         context.lineTo(220,20);
         context.strokeStyle = gradient;
         context.stroke();
+
+
 
         //vis små "hakk" på linjen for alle valg-verdiene:
         for (let i = 0; i < 11; i++) {
@@ -114,6 +118,27 @@
             context.strokeStyle = "#aaa";
             context.stroke();
         }
+
+        //Piler på hver ende av linjen
+        context.beginPath();
+        context.moveTo(15,20);
+        context.lineTo(20,17);
+        context.lineTo(20,23);
+        context.lineTo(15,20);
+        context.strokeStyle = colorLeft;
+        context.fillStyle = colorLeft;
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(225,20);
+        context.lineTo(220,17);
+        context.lineTo(220,23);
+        context.lineTo(225,20);
+        context.strokeStyle = colorRight;
+        context.fillStyle = colorRight;
+        context.fill();
+        context.stroke();
 
     })
 
