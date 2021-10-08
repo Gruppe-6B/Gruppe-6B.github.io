@@ -30,20 +30,20 @@
     <thead>
         <tr>
             <th colspan="3"><h3>How we roll</h3></th>
-
         </tr>
+
     </thead>
     <tbody id="howWeRollTableBody">
 
 
     </tbody>
     <tfoot>
-        <tr>
-            <td style="text-align: right; vertical-align: top">Personer:</td>
-            <td colspan="2" >
-                <canvas id="personer" width="240" height="200"></canvas>
-            </td>
-        </tr>
+    <tr>
+        <td style="text-align: right; vertical-align: top">Personer:</td>
+        <td colspan="2" >
+            <canvas id="personer" width="240" height="200"></canvas>
+        </td>
+    </tr>
     </tfoot>
 </table>
 
@@ -87,7 +87,7 @@
     function skrivSpørsmål(item) {
         let tr = document.createElement('tr');
         let inner = '<td style="text-align:right;"><label for="' + item[0] + '">' + item[1] + '</label></td>' +
-            '<td><canvas id="canvas-' + item[0] + '" width="240" height="40"></canvas></td>' +
+            '<td><canvas id="canvas-' + item[0] + '" width="240" height="40" style="vertical-align: middle;"></canvas></td>' +
             '<td><label for="' + item[0] + '">' + item[2] + '</label></td>';
         tr.innerHTML = inner;
         howWeRollTableBody.appendChild(tr);
@@ -97,17 +97,20 @@
     spm.forEach(function(s) {
         let canvas = document.getElementById('canvas-' + s[0]);
         let context = canvas.getContext('2d');
-
+        let gradient = context.createLinearGradient(20,20,220,20);
+        gradient.addColorStop(0, "rgb(111, 166, 33)");
+        gradient.addColorStop(1, "rgb(33, 102, 166");
         context.beginPath();
         context.moveTo(20,20);
         context.lineTo(220,20);
-        context.strokeStyle = "#aaa";
+        context.strokeStyle = gradient;
         context.stroke();
 
+        //vis små "hakk" på linjen for alle valg-verdiene:
         for (let i = 0; i < 11; i++) {
             context.beginPath();
-            context.moveTo(20 + i * 20,18);
-            context.lineTo(20 + i * 20,22);
+            context.moveTo(20 + i * 20,i === 5 ? 15 : 18);
+            context.lineTo(20 + i * 20,i === 5 ? 25 : 22);
             context.strokeStyle = "#aaa";
             context.stroke();
         }
@@ -134,7 +137,7 @@
                     let context = canvas.getContext('2d');
 
                     let X = 20 + intVal * 20;
-                    let Y = 20 + spm[i][3][intVal] * 5; //spm[i][3][intVal] = antall ganger dette spørmålet har blitt besvart med samme verdi tidligere, forskyv dotten ned litt
+                    let Y = 20 + spm[i][3][intVal] * 4; //spm[i][3][intVal] = antall ganger dette spørmålet har blitt besvart med samme verdi tidligere, forskyv dotten ned litt
                     let R = 6;
                     context.beginPath();
                     context.arc(X, Y, R, 0, 2*Math.PI, false);
@@ -159,12 +162,12 @@
     function skrivNavn(person) {
         let personerCanvas = document.getElementById('personer');
         let personercontext = personerCanvas.getContext('2d');
-        console.log(person);
+
         let X = 20;
         let Y = 10 + personI * 24;
         let R = 8;
         personercontext.beginPath();
-        personercontext.arc(X, Y, R, 0, 2*Math.PI, false);
+        personercontext.arc(X, Y, R, 0, 2 * Math.PI, false);
         personercontext.fillStyle = person[1];
         personercontext.fill();
         personercontext.lineWidth = 1;
@@ -174,8 +177,9 @@
         personercontext.font = '14px serif';
         personercontext.fillText(person[0], X + 16, Y + 5);
 
-    }
 
+
+    }
 
 </script>
 </body>

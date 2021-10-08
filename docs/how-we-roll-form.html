@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HowWeRoll prototype (lagring)</title>
+    <title>How-We-Roll prototype (lagring)</title>
     <!-- Med denne filen ønsker vi å bevise at vi kan samle inn data ... -->
     <style>
-     /* Her kan stil defineres (vi skal bruke Cascading Style Sheets) */
         body {
             background-color: #171717;
             color: #ededed;
@@ -16,6 +15,30 @@
         label {
             font-size: 12px;
             color: rgb(200,200,200);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: #444444;
+            color: #ededed;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 5px;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #555;
+        }
+
+        input {
+            background-color: #333;
+            color: #ededed;
+            border: 1px solid #444;
+            border-radius: 2px;
+            font-size: 14px;
         }
     </style>
     <!--
@@ -31,15 +54,12 @@
     -->
 </head>
 <body>
-    <!-- Her skrives alt innhold, som man ønsker å "tegne" på skjermen. -->
-    <!-- Issue se https://html.spec.whatwg.org/multipage/forms.html#introduction-4 -->
-    <hr>
     <form>
         <table>
 
             <tbody>
                 <tr>
-                    <td><label for="navn">Navn</label></td>
+                    <td style="text-align: right"><label for="navn">Navn</label></td>
                     <td><input type="text" name="navn" id="navn"/></td>
                     <td></td>
                 </tr>
@@ -48,27 +68,17 @@
                         <h3>HowWeRoll-parametre</h3>
                     </td>
                 </tr>
-
+                <tr>
+                    <td></td>
+                    <td style="text-align: center; padding-top: 10px;"><button type="submit">Send inn</button></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
 
-
-
-
-        <p>
-            <label>Please choose one of the numbers:
-                <select name="numb">
-                    <option value="ten">10</option>
-                    <option value="twenty">20</option>
-                    <option value="forty" disabled>30</option>
-                </select>
-            </label>
-        </p>
-
-        <button type="submit">Send inn</button>
     </form>
 
-    <div class="results">
+    <div class="results hidden">
         <h2>Form Data</h2>
         <pre></pre>
     </div>
@@ -102,6 +112,7 @@
             postData('https://bacit.info/', formJSON)
             .then(data => {
                results.innerText = JSON.stringify(data, null, 2) + '\n\nJSON fil: ' + data.time + '-' + data.trxid + '.json';
+                document.querySelector('.results').classList.remove('hidden');
             });
        }
 
