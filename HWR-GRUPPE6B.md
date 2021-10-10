@@ -1,5 +1,5 @@
-#Markdown dokument 6B
-##Her er hva vi har gjort og hvordan vi jobbet
+# Markdown dokument 6B
+## Her er hva vi har gjort og hvordan vi jobbet
 
 <p>I denne oppgaven har vi i gruppe 6B arbeidet i forskjellige grupper og inndelinger med forskjellig fokus. 
 Dette ga oss muligheten til å få ting gjort raskere og kunne lære av hverandre lettere og fungerte bra.</p>
@@ -15,10 +15,8 @@ Etter skissene og brukerhistoriene var ferdige, gikk vi i gang med kodingen og u
 
 
 
-#Brukerhistorier
-
-![alt text](https://raw.githubusercontent.com/Gruppe-6B/Gruppe-6B.github.io/visittkort/img.png) 
-Leder 
+# Brukerhistorier
+### Leder 
 
 1. Som leder ønsker jeg å se informasjon om når og hvordan de forskjellige ansatte ønsker å arbeide. (Must have)
 
@@ -32,7 +30,7 @@ Leder
 
 6. Som leder ønsker jeg å kunne opprette nye prosjekter for et team slik at de ansatte I teamet får tilgang til prosjektet og funksjonalitet rundt dette. (Should have)
 
-Ansatt 
+### Ansatt 
 
 Som ansatt ønsker jeg å registrere informasjon (om preferanser/kunnskap) så leder kan se hvordan jeg foretrekker å jobbe. (Must have)
 
@@ -47,7 +45,7 @@ Som ansatt ønsker jeg å kunne kommunisere med team-medlemmer. (Could have)
 Som ansatt ønsker jeg å se andres progresjon via skytjeneste. (Could have)
 
 
-Hver brukerhistorie ble vurdert etter MoSCoW-metoden: 
+<p>Hver brukerhistorie ble vurdert etter MoSCoW-metoden:</p>
 
 Must have 
 
@@ -55,10 +53,10 @@ Should have
 
 Could have 
 
-Won’t have 
+Won’t have
 
 
-#Skisser
+# Skisser
 
 ## View med visittkort
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design.png?raw=true)
