@@ -1,5 +1,5 @@
 # Markdown dokument 6B
-## Her er hva vi har gjort og hvordan vi jobbet
+## Her er hva vi har gjort og hvordan vi har jobbet
 
 <p>I denne oppgaven har vi i gruppe 6B arbeidet i forskjellige grupper og inndelinger med forskjellig fokus. 
 Dette ga oss muligheten til å få ting gjort raskere og kunne lære av hverandre lettere og fungerte bra.</p>
@@ -8,7 +8,7 @@ Dette ga oss muligheten til å få ting gjort raskere og kunne lære av hverandr
 <p>Brukerhistorier var neste steg som vi begynte på, hvor vi så for oss behovene til brukerne av nettsiden. Disse ble laget før vi fikk den nøyaktige beskrivelsen av oppgaven. Av den grunn så vi i ettertid at ikke alle brukerhistoriene var like relevante. 
 Vi brukte <b>MSCW metoden</b> for å utelukke unødvendige funksjoner og sette fokus på de nødvendige.</p>
 <p>Når det kom til kodingen, har vi brukt <b>IntelliJ CodeWithMe</b> aktivt og samarbeidet, sammen med <b>Teams fjernkontroll</b>.
-CodeWithMe fungerte litt dårlig, på grunn av preview, men bra til rask koding for flere.</p>
+CodeWithMe fungerte litt dårlig, på grunn av preview, men bra til rask koding for flere. Vi har aktivt brukt branching og pull-requests for å merge kode og løse konflikter</p>
 Etter skissene og brukerhistoriene var ferdige, gikk vi i gang med kodingen og utforming av skjemaet og rapporten, hvor vi igjen delte oss i grupper, som fungerte greit.
 <p>Vi hadde ikke noen spesielle regler, men Ole Christian og Magnus bestemte pull requestene slik at det var noen som hadde kontroll.</p>
 
@@ -59,10 +59,10 @@ Won’t have
 # Skisser
 
 ## View med visittkort
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%202.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%203.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%204.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/Gruppe-6B.github.io/blob/2c52d8c2330b6167edeade0a8b20f2a8fe9972f3/VISITBILETTE.png?raw=true)
+![Visittkort design 1](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design.png?raw=true)
+![Visittkort design 2](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%202.png?raw=true)
+![Visittkort design 2](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%203.png?raw=true)
+![Visittkort design 4](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%204.png?raw=true)
+![Visittkort design 5](https://github.com/Gruppe-6B/Gruppe-6B.github.io/blob/2c52d8c2330b6167edeade0a8b20f2a8fe9972f3/VISITBILETTE.png?raw=true)
 
 
