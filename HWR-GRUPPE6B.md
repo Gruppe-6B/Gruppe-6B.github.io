@@ -32,17 +32,17 @@ Etter skissene og brukerhistoriene var ferdige, gikk vi i gang med kodingen og u
 
 ### Ansatt 
 
-Som ansatt ønsker jeg å registrere informasjon (om preferanser/kunnskap) så leder kan se hvordan jeg foretrekker å jobbe. (Must have)
+7. Som ansatt ønsker jeg å registrere informasjon (om preferanser/kunnskap) så leder kan se hvordan jeg foretrekker å jobbe. (Must have)
 
-Som ansatt trenger jeg å kunne logge inn på applikasjonen for å få tilgang til alle funksjoner. (Must have)
+8. Som ansatt trenger jeg å kunne logge inn på applikasjonen for å få tilgang til alle funksjoner. (Must have)
 
-Som ansatt ønsker jeg mulighet til å endre informasjonen min om mine preferanser I ettertid dersom jeg ønsker. (Must have)  
+9. Som ansatt ønsker jeg mulighet til å endre informasjonen min om mine preferanser I ettertid dersom jeg ønsker. (Must have)  
 
-Som ansatt ønsker jeg å se teamet jeg har blitt satt opp I, så jeg vet hvem jeg jobber med og hvordan de jobber. (Should have)
+10. Som ansatt ønsker jeg å se teamet jeg har blitt satt opp I, så jeg vet hvem jeg jobber med og hvordan de jobber. (Should have)
 
-Som ansatt ønsker jeg å kunne kommunisere med team-medlemmer. (Could have)
+11. Som ansatt ønsker jeg å kunne kommunisere med team-medlemmer. (Could have)
 
-Som ansatt ønsker jeg å se andres progresjon via skytjeneste. (Could have)
+12. Som ansatt ønsker jeg å se andres progresjon via skytjeneste. (Could have)
 
 
 <p>Hver brukerhistorie ble vurdert etter MoSCoW-metoden:</p>
