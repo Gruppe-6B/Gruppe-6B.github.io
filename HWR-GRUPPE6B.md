@@ -17,7 +17,7 @@ Etter skissene og brukerhistoriene var ferdige, gikk vi i gang med kodingen og u
 
 #Brukerhistorier
 
-![alt text](https://raw.githubusercontent.com/Gruppe-6B/Gruppe-6B.github.io/visittkort/img.png) 
+
 Leder 
 
 1. Som leder ønsker jeg å se informasjon om når og hvordan de forskjellige ansatte ønsker å arbeide. (Must have)
@@ -47,7 +47,7 @@ Som ansatt ønsker jeg å kunne kommunisere med team-medlemmer. (Could have)
 Som ansatt ønsker jeg å se andres progresjon via skytjeneste. (Could have)
 
 
-Hver brukerhistorie ble vurdert etter MoSCoW-metoden: 
+<p>Hver brukerhistorie ble vurdert etter MoSCoW-metoden:</p>
 
 Must have 
 
@@ -55,7 +55,7 @@ Should have
 
 Could have 
 
-Won’t have 
+Won’t have
 
 
 #Skisser
