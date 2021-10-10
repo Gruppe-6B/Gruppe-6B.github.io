@@ -1,5 +1,5 @@
-#Markdown dokument 6B
-##Her er hva vi har gjort og hvordan vi jobbet
+# Markdown dokument 6B
+## Her er hva vi har gjort og hvordan vi jobbet
 
 <p>I denne oppgaven har vi i gruppe 6B arbeidet i forskjellige grupper og inndelinger med forskjellig fokus. 
 Dette ga oss muligheten til å få ting gjort raskere og kunne lære av hverandre lettere og fungerte bra.</p>
