@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HowWeRoll prototype (lagring)</title>
+    <title>How-We-Roll prototype (lagring)</title>
     <!-- Med denne filen ønsker vi å bevise at vi kan samle inn data ... -->
     <style>
-     /* Her kan stil defineres (vi skal bruke Cascading Style Sheets) */
         body {
             background-color: #171717;
             color: #ededed;
@@ -16,6 +15,30 @@
         label {
             font-size: 12px;
             color: rgb(200,200,200);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: #444444;
+            color: #ededed;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 5px;
+            font-weight: 600;
+        }
+        button:hover {
+            background-color: #555;
+        }
+
+        input {
+            background-color: #333;
+            color: #ededed;
+            border: 1px solid #444;
+            border-radius: 2px;
+            font-size: 14px;
         }
     </style>
     <!--
@@ -31,15 +54,12 @@
     -->
 </head>
 <body>
-    <!-- Her skrives alt innhold, som man ønsker å "tegne" på skjermen. -->
-    <!-- Issue se https://html.spec.whatwg.org/multipage/forms.html#introduction-4 -->
-    <hr>
     <form>
         <table>
 
             <tbody>
                 <tr>
-                    <td><label for="navn">Navn</label></td>
+                    <td style="text-align: right"><label for="navn">Navn</label></td>
                     <td><input type="text" name="navn" id="navn"/></td>
                     <td></td>
                 </tr>
@@ -48,33 +68,27 @@
                         <h3>HowWeRoll-parametre</h3>
                     </td>
                 </tr>
-
+                <tr>
+                    <td></td>
+                    <td style="text-align: center; padding-top: 10px;"><button type="submit">Send inn</button></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
 
-
-
-
-        <p>
-            <label>Please choose one of the numbers:
-                <select name="numb">
-                    <option value="ten">10</option>
-                    <option value="twenty">20</option>
-                    <option value="forty" disabled>30</option>
-                </select>
-            </label>
-        </p>
-
-        <button type="submit">Send inn</button>
     </form>
 
-    <div class="results">
+    <div class="results hidden">
         <h2>Form Data</h2>
         <pre></pre>
     </div>
 
+    <hr />
+    <h3><a href="index.html" style="color: white">Til Forsiden</a></h3>
+    <h3><a href="how-we-roll-rapport.html" style="color: white">Til Rapporten</a></h3>
+
     <script type="text/javascript">
-       //Example POST method implementation using fetch:
+       //Poster en serialisert json streng til serveren for lagring, og returnerer svaret
        async function postData(url = '', data = {}) {
            // Default options are marked with *
            const response = await fetch(url, {
@@ -93,6 +107,7 @@
            return response.json(); // parses JSON response into native JavaScriptobjects
        }
 
+       //håndterer postingen av formen og skriver ut svaret i bunnen av siden, inkludert en string med navnet på json filen
        function handleSubmit(event) {
             event.preventDefault();
             const data = new FormData(event.target);
@@ -101,28 +116,33 @@
             const results = document.querySelector('.results pre');
             postData('https://bacit.info/', formJSON)
             .then(data => {
-               results.innerText = JSON.stringify(data, null, 2);
+               results.innerText = JSON.stringify(data, null, 2) + '\n\nJSON fil: ' + data.time + '-' + data.trxid + '.json';
+                document.querySelector('.results').classList.remove('hidden');
             });
        }
 
+       // Denne variabelen inneholder alle spørsmålene i formen, eksisterer i både formen og rapporten
        const spm = [
-            ["morgenEllerNatt", "Morgenfugl", "Nattugle"],
-            ["lagarbeid", "Fortrekker å jobbe selvstendig", "Foretrekker å jobbe i gruppe"],
-            ["improvisere", "Planlegge nøye først", "Improvisere"],
-            ["perfeksjonist", "Tidsorientert", "Perfeksjonist"],
-            ["Åpen for nye ideer", "Konservativ", "Åpen"],
-            ["Fort irritert", "Konfliktsy", "Fort irritert"],
-            ["Besluttsom", "Ubesluttsom", "Besluttsom"],
-            ["Jobbe i korte eller lange perioder", "Korte", "Lange"],
-            ["Få ting gjort eller ta seg god tid", "Få ting gjort", "Ta seg god tid"],
-            ["Liker å lede?", "Følge", "Lede"]
+           ["morgenEllerNatt", "Morgenfugl", "Nattugle"],
+           ["lagarbeid", "Fortrekker å jobbe selvstendig", "Foretrekker å jobbe i gruppe"],
+           ["planleggeEllerImprovisere", "Planlegge nøye først", "Improvisere"],
+           ["perfeksjonist", "Tidsorientert", "Perfeksjonist"],
+           ["tilnærmingTilNyeIdeer", "Konservativ til nye ideer", "Åpen til nye ideer"],
+           ["konfliktskyEllerKonfronterende", "Konfliktsky", "Konfronterende"],
+           ["besluttsomEllerUbesluttsom", "Ubesluttsom", "Besluttsom"],
+           ["korteEllerLangePerioder", "Jobbe i korte perioder", "Jobbe i lange perioder"],
+           ["tålmodighet", "Få ting gjort", "Ta seg god tid"],
+           ["følgeEllerLede", "Liker å følge", "Liker å lede"]
 
        ];
+
        let howWeRollRow = document.getElementById('howWeRollRow');
-       console.log(howWeRollRow);
-       spm.forEach(skrivSpørsmål);
 
+       //skriv rader i tabellen for alle spørsmålene
+       for (let i = spm.length - 1; i >= 0; i--)
+           skrivSpørsmål(spm[i]);
 
+       //Genererer en rad med input og tekst basert på listen over spørsmål ("spm")
        function skrivSpørsmål(item) {
             console.log(item);
             let tr = document.createElement('tr');
@@ -132,7 +152,8 @@
             tr.innerHTML = inner;
             howWeRollRow.parentNode.insertBefore(tr, howWeRollRow.nextSibling);
        }
-       console.log(spm);
+
+       //lag en event som kjører handleSubmit() når submit knappen blir brukt
        const form = document.querySelector('form');
        form.addEventListener('submit', handleSubmit);
     </script>

@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TITTEL</title>
+    <title>How we roll - rapport</title>
     <style>
-     <!-- Her kan stil defineres (vi skal bruke Cascading Style Sheets) -->
+        body {
+            background-color: #222;
+            color: #ededed;
+        }
     </style>
     <!--
 
@@ -23,19 +26,193 @@
 <body>
 <!-- Her skrives alt innhold, som man ønsker å "tegne" på skjermen. -->
 
+<table>
+    <thead>
+        <tr>
+            <th colspan="3"><h3>How we roll</h3></th>
+        </tr>
+
+    </thead>
+    <tbody id="howWeRollTableBody">
+
+
+    </tbody>
+    <tfoot>
+    <tr>
+        <td style="text-align: right; vertical-align: top">Personer:</td>
+        <td colspan="2" >
+            <canvas id="personer" width="240" height="200"></canvas>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+
+<canvas id="report"></canvas>
+
+<hr />
+<h3><a href="index.html" style="color: white">Til Forsiden</a></h3>
+
 <script>
+    // Denne variabelen inneholder alle spørsmålene i formen, eksisterer i både formen og rapporten
+    let spm = [
+        ["morgenEllerNatt", "Morgenfugl", "Nattugle"],
+        ["lagarbeid", "Fortrekker å jobbe selvstendig", "Foretrekker å jobbe i gruppe"],
+        ["planleggeEllerImprovisere", "Planlegge nøye først", "Improvisere"],
+        ["perfeksjonist", "Tidsorientert", "Perfeksjonist"],
+        ["tilnærmingTilNyeIdeer", "Konservativ til nye ideer", "Åpen til nye ideer"],
+        ["konfliktskyEllerKonfronterende", "Konfliktsky", "Konfronterende"],
+        ["besluttsomEllerUbesluttsom", "Ubesluttsom", "Besluttsom"],
+        ["korteEllerLangePerioder", "Jobbe i korte perioder", "Jobbe i lange perioder"],
+        ["tålmodighet", "Få ting gjort", "Ta seg god tid"],
+        ["følgeEllerLede", "Liker å følge", "Liker å lede"]
 
-    fetch('https://bacit.info/hwr/20210926134925-47352fbdecddd9a754001f4e4abbf40f.json')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    ];
 
-    fetch('https://bacit.info/hwr/20210926162029-a89356bb617d3bbf870649c08570427e.json')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    // Liste over alle svarene/personene som skal hentes fra server
+    const jsons = ["20211010164036-12f6e6208842c17ad5b0145639f74e96.json",
+        "20211010164053-1e09fd6721d559a4926843038aab1f85.json",
+        "20211010164119-33dfa66d737561a731b77b04fcca480b.json",
+        "20211010164149-d7523f077ab6cc5a1063a6c51f2a8c6e.json",
+        "20211010164701-fe71512429013f1f3e8b51a57361e263.json",
+        "20211010164603-9a15f494df046c971e65d69b1ac41e97.json",
+        "20211010164915-781dd712b3ff47da63b8e1e0d65c5ef8.json"];
 
-    fetch('https://bacit.info/hwr/20210927113650-03cb3bd829e6445c77d338b671670a58.json')
-    .then(response => response.json())
-    .then(data => console.log(data));
-  </script>
+    //Denne delen brukes til å holde telling over hvor mange ganger et spørsmål har hatt en verdi.
+    let emptyArray = new Array(11);
+    for (let i = 0; i < 11; i++) {
+        emptyArray[i] = 0;
+    }
+    console.log(emptyArray);
+    for (let i = 0; i < spm.length; i++) {
+        spm[i].push([...emptyArray]);
+    }
+
+    let howWeRollTableBody = document.getElementById('howWeRollTableBody');
+    spm.forEach(skrivSpørsmål);
+
+    //Bygger opp tabellen med rader for hvert spørsmål
+    function skrivSpørsmål(item) {
+        let tr = document.createElement('tr');
+        let inner = '<td style="text-align:right;"><label for="' + item[0] + '">' + item[1] + '</label></td>' +
+            '<td><canvas id="canvas-' + item[0] + '" width="240" height="40" style="vertical-align: middle;"></canvas></td>' +
+            '<td><label for="' + item[0] + '">' + item[2] + '</label></td>';
+        tr.innerHTML = inner;
+        howWeRollTableBody.append(tr);
+    }
+
+    //Tegn linjene for hver canvas/spørsmål:
+    spm.forEach(function(s) {
+        let colorLeft = "rgb(111, 166, 33)";
+        let colorRight = "rgb(33, 102, 166";
+        let canvas = document.getElementById('canvas-' + s[0]);
+        let context = canvas.getContext('2d');
+        let gradient = context.createLinearGradient(20,20,220,20);
+        gradient.addColorStop(0, colorLeft);
+        gradient.addColorStop(1, colorRight);
+        context.beginPath();
+        context.moveTo(20,20);
+        context.lineTo(220,20);
+        context.strokeStyle = gradient;
+        context.stroke();
+
+
+
+        //vis små "hakk" på linjen for alle valg-verdiene:
+        for (let i = 0; i < 11; i++) {
+            context.beginPath();
+            context.moveTo(20 + i * 20,i === 5 ? 15 : 18);
+            context.lineTo(20 + i * 20,i === 5 ? 25 : 22);
+            context.strokeStyle = "#aaa";
+            context.stroke();
+        }
+
+        //Piler på hver ende av linjen
+        context.beginPath();
+        context.moveTo(15,20);
+        context.lineTo(20,17);
+        context.lineTo(20,23);
+        context.lineTo(15,20);
+        context.strokeStyle = colorLeft;
+        context.fillStyle = colorLeft;
+        context.fill();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(225,20);
+        context.lineTo(220,17);
+        context.lineTo(220,23);
+        context.lineTo(225,20);
+        context.strokeStyle = colorRight;
+        context.fillStyle = colorRight;
+        context.fill();
+        context.stroke();
+
+    })
+
+    let personI = 0;
+    jsons.forEach(renderJSON);
+    //Skriver ut data på canvaser for en JSON fil.
+    async function renderJSON(item) {
+        //hente json fra serveren
+        await fetch('https://bacit.info/hwr/' + item, {cache: 'no-cache'})
+            .then(response => response.json())
+            .then(data => {
+                //data inneholder modellen
+                //farge for personen
+                let color = 'hsl('+ personI/jsons.length * 360 +', 100%, 75%)';
+
+                //loop igjennom alle spørsmålene og fyll inn "dottene":
+                let i = 0;
+                spm.forEach(function(s){
+                    let intVal = parseInt(data[s[0]]); //int verdien for spørsmålet
+                    let canvas = document.getElementById('canvas-' + s[0]);
+                    let context = canvas.getContext('2d');
+
+                    let X = 20 + intVal * 20;
+                    let Y = 20 + spm[i][3][intVal] * 4; //spm[i][3][intVal] = antall ganger dette spørmålet har blitt besvart med samme verdi tidligere, forskyv dotten ned litt
+                    let R = 6;
+                    context.beginPath();
+                    context.arc(X, Y, R, 0, 2*Math.PI, false);
+                    context.fillStyle = color;
+                    context.fill();
+                    context.lineWidth = 1;
+                    context.strokeStyle = "#111";
+                    context.stroke();
+
+                    spm[i][3][intVal]++;
+                    i++;
+                });
+
+                //legg til person navn og farge i listen over personer, brukes til å skrive ut listen over personer senere
+                skrivNavn([data.navn, color]);
+                personI++;
+
+            });
+    }
+
+    //Funksjon som skriver personen til listen over personer, med gitt farget.
+    function skrivNavn(person) {
+        let personerCanvas = document.getElementById('personer');
+        let personercontext = personerCanvas.getContext('2d');
+
+        let X = 20;
+        let Y = 10 + personI * 24;
+        let R = 8;
+        personercontext.beginPath();
+        personercontext.arc(X, Y, R, 0, 2 * Math.PI, false);
+        personercontext.fillStyle = person[1];
+        personercontext.fill();
+        personercontext.lineWidth = 1;
+        personercontext.strokeStyle = "#000";
+        personercontext.stroke();
+
+        personercontext.font = '14px serif';
+        personercontext.fillText(person[0], X + 16, Y + 5);
+
+
+
+    }
+
+</script>
 </body>
 </html>
