@@ -81,6 +81,7 @@
             overflow: hidden;
             background-color: #444444;
             font-size: large;
+            max-height: 80px;
 
         }
 
@@ -89,8 +90,27 @@
             color: white;
             text-align: center;
             padding: 14px 16px;
+            float: left;
         }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background-color: black;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
     </style>
 </head>
@@ -98,8 +118,13 @@
 
 <div class="navigation">
 <ul>
-    <li class="navbutton" style="float: left"><a href="how-we-roll-form.html" style="color: white; text-decoration: none" target="_blank">How We Roll - Form</a></li>
-    <li class="navbutton" style="float: left"><a href="how-we-roll-rapport.html" style="color: white; text-decoration: none" target="_blank">How We Roll - Rapport</a></li>
+    <li class="navbutton"><a href="index.html" style="color: white; text-decoration: none">Hjem</a></li>
+    <ul class="dropdown"><p>How We Roll</p>
+        <div class="dropdown-content">
+        <li class="navbutton"><a href="how-we-roll-form.html" style="color: white; text-decoration: none">Form</a></li>
+        <li class="navbutton"><a href="how-we-roll-rapport.html" style="color: white; text-decoration: none">Rapport</a></li>
+        </div>
+    </ul>
 </ul>
 </div>
 
