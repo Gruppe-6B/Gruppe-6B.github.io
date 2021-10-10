@@ -59,10 +59,10 @@ Won’t have
 # Skisser
 
 ## View med visittkort
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%202.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%203.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%204.png?raw=true)
-![alt text](https://github.com/Gruppe-6B/Gruppe-6B.github.io/blob/2c52d8c2330b6167edeade0a8b20f2a8fe9972f3/VISITBILETTE.png?raw=true)
+![Visittkort design 1](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design.png?raw=true)
+![Visittkort design 2](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%202.png?raw=true)
+![Visittkort design 2](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%203.png?raw=true)
+![Visittkort design 4](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design%204.png?raw=true)
+![Visittkort design 5](https://github.com/Gruppe-6B/Gruppe-6B.github.io/blob/2c52d8c2330b6167edeade0a8b20f2a8fe9972f3/VISITBILETTE.png?raw=true)
 
 
