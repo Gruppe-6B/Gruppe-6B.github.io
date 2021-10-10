@@ -15,10 +15,8 @@ Etter skissene og brukerhistoriene var ferdige, gikk vi i gang med kodingen og u
 
 
 
-#Brukerhistorier
-
-
-Leder 
+# Brukerhistorier
+### Leder 
 
 1. Som leder ønsker jeg å se informasjon om når og hvordan de forskjellige ansatte ønsker å arbeide. (Must have)
 
@@ -32,7 +30,7 @@ Leder
 
 6. Som leder ønsker jeg å kunne opprette nye prosjekter for et team slik at de ansatte I teamet får tilgang til prosjektet og funksjonalitet rundt dette. (Should have)
 
-Ansatt 
+### Ansatt 
 
 Som ansatt ønsker jeg å registrere informasjon (om preferanser/kunnskap) så leder kan se hvordan jeg foretrekker å jobbe. (Must have)
 
@@ -58,7 +56,7 @@ Could have
 Won’t have
 
 
-#Skisser
+# Skisser
 
 ## View med visittkort
 ![alt text](https://github.com/Gruppe-6B/is114/blob/main/Visittkort-design.png?raw=true)
